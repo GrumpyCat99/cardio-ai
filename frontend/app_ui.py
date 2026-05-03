@@ -182,6 +182,92 @@ def generate_pdf(result, data):
     doc = SimpleDocTemplate(buffer)
     styles = getSampleStyleSheet()
 
+    small_style = styles["Normal"].clone('small')
+    small_style.fontSize = 8
+
+    content = []
+
+    content.append(Paragraph("CARDIOLOGY CONSULTATION REPORT", styles["Title"]))
+    content.append(Spacer(1, 12))
+
+    content.append(Paragraph("Patient Name: ______________________________", styles["Normal"]))
+    content.append(Spacer(1, 10))
+
+    content.append(Paragraph(f"Date: {datetime.date.today()}", styles["Normal"]))
+    content.append(Spacer(1, 10))
+
+    content.append(Paragraph("Patient Clinical Data", styles["Heading3"]))
+
+    # Human readable values
+    readable_data = [
+        ["Age", f"{data['age']} years"],
+        ["Biological Sex", "Male" if data["sex"] == 1 else "Female"],
+        ["Chest Pain Type", list(cp_map.keys())[list(cp_map.values()).index(data["cp"])],
+        ["Resting Blood Pressure", f"{data['trestbps']} millimeters of mercury"],
+        ["Cholesterol", f"{data['chol']} milligrams per deciliter"],
+        ["Fasting Blood Sugar", list(fbs_map.keys())[list(fbs_map.values()).index(data["fbs"])],
+        ["Resting Electrocardiography", list(restecg_map.keys())[list(restecg_map.values()).index(data["restecg"])],
+        ["Maximum Heart Rate", f"{data['thalach']} beats per minute"],
+        ["Exercise Induced Angina", "Yes" if data["exang"] == 1 else "No"],
+        ["ST Segment Depression", f"{data['oldpeak']} millimeters"],
+        ["ST Segment Slope", list(slope_map.keys())[list(slope_map.values()).index(data["slope"])],
+        ["Coronary Vessel Status", list(ca_map.keys())[list(ca_map.values()).index(data["ca"])],
+        ["Thallium Test Result", list(thal_map.keys())[list(thal_map.values()).index(data["thal"])]
+    ]
+
+    # Wider table
+    table = Table(
+        [["Parameter", "Value"]] + readable_data,
+        colWidths=[220, 300]
+    )
+
+    table.setStyle(TableStyle([
+        ("GRID", (0,0), (-1,-1), 1, colors.black),
+        ("BACKGROUND", (0,0), (-1,0), colors.lightgrey),
+        ("FONTNAME", (0,0), (-1,0), "Helvetica-Bold"),
+        ("VALIGN", (0,0), (-1,-1), "TOP"),
+    ]))
+
+    content.append(table)
+
+    content.append(Spacer(1, 6))
+    content.append(Paragraph("<b>Assessment</b>", small_style))
+    content.append(Paragraph(
+        f"Risk Category: {result['risk_category']} ({round(result['probability']*100,1)} percent)",
+        small_style
+    ))
+    content.append(Paragraph(f"Credibility: {round(result['confidence']*100,1)} percent", small_style))
+
+    content.append(Spacer(1, 6))
+    content.append(Paragraph("<b>Clinical Interpretation</b>", small_style))
+    content.append(Paragraph(result["clinical_reasoning"], small_style))
+
+    content.append(Spacer(1, 6))
+    content.append(Paragraph("<b>Management Plan</b>", small_style))
+
+    for r in result["recommendations"]:
+        content.append(Paragraph(f"- {r}", small_style))
+
+    content.append(Spacer(1, 6))
+    content.append(Paragraph(
+        "Recommendation: Referral to cardiology specialist is advised for further evaluation.",
+        small_style
+    ))
+
+    content.append(Spacer(1, 12))
+    content.append(Paragraph("Doctor Signature:", small_style))
+    content.append(Spacer(1, 20))
+    content.append(Paragraph("______________________________", small_style))
+
+    doc.build(content)
+    buffer.seek(0)
+    return buffer
+
+
+    buffer = BytesIO()
+    doc = SimpleDocTemplate(buffer)
+    styles = getSampleStyleSheet()
+
     # smaller font style
     small_style = styles["Normal"].clone('small')
     small_style.fontSize = 8
