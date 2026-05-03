@@ -200,20 +200,21 @@ def generate_pdf(result, data):
 
     # Human readable values
     readable_data = [
-        ["Age", f"{data['age']} years"],
-        ["Biological Sex", "Male" if data["sex"] == 1 else "Female"],
-        ["Chest Pain Type", list(cp_map.keys())[list(cp_map.values()).index(data["cp"])]],
-        ["Resting Blood Pressure", f"{data['trestbps']} millimeters of mercury"],
-        ["Cholesterol", f"{data['chol']} milligrams per deciliter"],
-        ["Fasting Blood Sugar", list(fbs_map.keys())[list(fbs_map.values()).index(data["fbs"])]],
-        ["Resting Electrocardiography", list(restecg_map.keys())[list(restecg_map.values()).index(data["restecg"])],
-        ["Maximum Heart Rate", f"{data['thalach']} beats per minute"],
-        ["Exercise Induced Angina", "Yes" if data["exang"] == 1 else "No"],
-        ["ST Segment Depression", f"{data['oldpeak']} millimeters"],
-        ["ST Segment Slope", list(slope_map.keys())[list(slope_map.values()).index(data["slope"])]],
-        ["Coronary Vessel Status", list(ca_map.keys())[list(ca_map.values()).index(data["ca"])]],
-        ["Thallium Test Result", list(thal_map.keys())[list(thal_map.values()).index(data["thal"])]]
+    ["Age", f"{data['age']} years"],
+    ["Biological Sex", "Male" if data["sex"] == 1 else "Female"],
+    ["Chest Pain Type", list(cp_map.keys())[list(cp_map.values()).index(data["cp"])]],
+    ["Resting Blood Pressure", f"{data['trestbps']} millimeters of mercury"],
+    ["Cholesterol", f"{data['chol']} milligrams per deciliter"],
+    ["Fasting Blood Sugar", list(fbs_map.keys())[list(fbs_map.values()).index(data["fbs"])]],
+    ["Resting Electrocardiography", list(restecg_map.keys())[list(restecg_map.values()).index(data["restecg"])]],
+    ["Maximum Heart Rate", f"{data['thalach']} beats per minute"],
+    ["Exercise Induced Angina", "Yes" if data["exang"] == 1 else "No"],
+    ["ST Segment Depression", f"{data['oldpeak']} millimeters"],
+    ["ST Segment Slope", list(slope_map.keys())[list(slope_map.values()).index(data["slope"])]],
+    ["Coronary Vessel Status", list(ca_map.keys())[list(ca_map.values()).index(data["ca"])]],
+    ["Thallium Test Result", list(thal_map.keys())[list(thal_map.values()).index(data["thal"])]]
     ]
+
 
     # Wider table
     table = Table(
