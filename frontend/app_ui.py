@@ -254,13 +254,14 @@ st.divider()
 
 if st.button("🧠 Run Clinical Risk Analysis", use_container_width=True):
 
+  with st.spinner("The AI is Thinking..."):
     try:
         API_URL = "https://cardio-ai-msud.onrender.com/predict"
 
         response = requests.post(
             API_URL,
             json=data,
-            timeout=10
+            timeout=100
         )
 
         result = response.json()
