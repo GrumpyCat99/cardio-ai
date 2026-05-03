@@ -279,7 +279,7 @@ if st.button("🧠 Run Clinical Risk Analysis", use_container_width=True):
         response = requests.post(
             API_URL,
             json=data,
-            timeout=100
+            timeout=90
         )
 
         result = response.json()
