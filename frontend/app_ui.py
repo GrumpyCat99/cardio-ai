@@ -255,11 +255,13 @@ st.divider()
 if st.button("🧠 Run Clinical Risk Analysis", use_container_width=True):
 
     try:
-        response = requests.post(
-           API_URL = "https://cardio-ai-msud.onrender.com/predict",
-            requests.post(API_URL, json=data),
-            timeout=10
-        )
+        API_URL = "https://cardio-ai-msud.onrender.com/predict"
+
+response = requests.post(
+    API_URL,
+    json=data,
+    timeout=10
+)
         result = response.json()
 
     except:
