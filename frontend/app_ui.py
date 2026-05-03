@@ -22,7 +22,7 @@ st.sidebar.info(
     "This system estimates cardiovascular risk using machine learning "
     "and provides explainable insights to support clinical decision making.\n\n"
     "This AI Project is created" 
-    "by Ibrahim Muhammad Yusuf"
+    "by Ibrahim Muhammad Yusuf \n"
     "@2026 All Rights Reserved"
 )
 
