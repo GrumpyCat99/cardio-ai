@@ -21,7 +21,7 @@ st.sidebar.title("ℹ️ About")
 st.sidebar.info(
     "This system estimates cardiovascular risk using machine learning "
     "and provides explainable insights to support clinical decision making.\n\n"
-    "This AI Project is created by Ibrahim Muhammad Yusuf 2026"
+    "This AI Project is created by Ibrahim Muhammad Yusuf @2026 All Rights Reserved"
 )
 
 st.sidebar.subheader("📘 Clinical Definitions")
@@ -43,6 +43,11 @@ st.sidebar.markdown("""
 - Probability: The numerical likelihood of cardiovascular disease predicted by the model. It provides quantitative risk estimation.
 
 - Credibility: The confidence level of the prediction, derived from the distance from uncertainty. Higher credibility indicates more reliable predictions.
+""")
+
+st.sidebar.subheader("⚠️ Warning")
+st.sidebar.markdown("""
+This AI model is still under development. Due to limited dataset size, it is not yet suitable for real-world clinical use.
 """)
 
 # =========================
