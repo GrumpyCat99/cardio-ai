@@ -264,14 +264,16 @@ try:
         timeout=10
     )
     result = response.json()
-
-except Exception:
+    except Exception:
     st.error("Backend connection failed")
     st.stop()
 
     if result.get("status") != "success":
         st.error(result)
         st.stop()
+        )
+
+
 
     result["recommendations"] = improve_recommendations(result["recommendations"])
 
