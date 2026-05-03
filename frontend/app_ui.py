@@ -213,7 +213,7 @@ def generate_pdf(result, data):
         ["ST Segment Slope", list(slope_map.keys())[list(slope_map.values()).index(data["slope"])]],
         ["Coronary Vessel Status", list(ca_map.keys())[list(ca_map.values()).index(data["ca"])]],
         ["Thallium Test Result", list(thal_map.keys())[list(thal_map.values()).index(data["thal"])]]
-        ]
+    ]
 
     # Wider table
     table = Table(
