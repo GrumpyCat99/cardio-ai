@@ -120,6 +120,11 @@ def generate_recommendations(feature_sorted):
 
     return recommendations[:5]
 
+@app.route("/health")
+def health():
+    return {"status": "ok"}, 200
+
+
 # =========================
 # PREDICT ENDPOINT
 # =========================
