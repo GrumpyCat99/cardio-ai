@@ -269,10 +269,6 @@ except Exception:
     st.error("Backend connection failed")
     st.stop()
 
-    except:
-        st.error("Backend connection failed")
-        st.stop()
-
     if result.get("status") != "success":
         st.error(result)
         st.stop()
