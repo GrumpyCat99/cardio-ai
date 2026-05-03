@@ -257,7 +257,6 @@ if st.button("🧠 Run Clinical Risk Analysis", use_container_width=True):
     try:
         API_URL = "https://cardio-ai-msud.onrender.com/predict"
 
-try:
     response = requests.post(
         API_URL,
         json=data,
@@ -271,9 +270,7 @@ try:
     if result.get("status") != "success":
         st.error(result)
         st.stop()
-        )
-
-
+        
 
     result["recommendations"] = improve_recommendations(result["recommendations"])
 
