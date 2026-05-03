@@ -257,12 +257,17 @@ if st.button("🧠 Run Clinical Risk Analysis", use_container_width=True):
     try:
         API_URL = "https://cardio-ai-msud.onrender.com/predict"
 
-response = requests.post(
-    API_URL,
-    json=data,
-    timeout=10
-)
-        result = response.json()
+try:
+    response = requests.post(
+        API_URL,
+        json=data,
+        timeout=10
+    )
+    result = response.json()
+
+except Exception:
+    st.error("Backend connection failed")
+    st.stop()
 
     except:
         st.error("Backend connection failed")
