@@ -210,9 +210,9 @@ def generate_pdf(result, data):
         ["Maximum Heart Rate", f"{data['thalach']} beats per minute"],
         ["Exercise Induced Angina", "Yes" if data["exang"] == 1 else "No"],
         ["ST Segment Depression", f"{data['oldpeak']} millimeters"],
-        ["ST Segment Slope", list(slope_map.keys())[list(slope_map.values()).index(data["slope"])],
+        ["ST Segment Slope", list(slope_map.keys())[list(slope_map.values()).index(data["slope"])]],
         ["Coronary Vessel Status", list(ca_map.keys())[list(ca_map.values()).index(data["ca"])]],
-        ["Thallium Test Result", list(thal_map.keys())[list(thal_map.values()).index(data["thal"])]
+        ["Thallium Test Result", list(thal_map.keys())[list(thal_map.values()).index(data["thal"])]]
     ]
 
     # Wider table
