@@ -21,7 +21,9 @@ st.sidebar.title("ℹ️ About")
 st.sidebar.info(
     "This system estimates cardiovascular risk using machine learning "
     "and provides explainable insights to support clinical decision making.\n\n"
-    "This AI Project is created by Ibrahim Muhammad Yusuf @2026 All Rights Reserved"
+    "This AI Project is created" 
+    "by Ibrahim Muhammad Yusuf"
+    "@2026 All Rights Reserved"
 )
 
 st.sidebar.subheader("📘 Clinical Definitions")
